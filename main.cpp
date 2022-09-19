@@ -6,20 +6,44 @@ char SecondPlayer = 'O';
 
 std::vector<std::string> gameboard = { "| | | |", "| | | |", "| | | |"};
 
+void welcomeMenu(){
+}
+
 void printGB(){
-	std::cout << " |-------| " << std::endl;
-	std::cout << "  " << gameboard[0] << "  "<< std::endl;
-	std::cout << "  " << gameboard[1] << "  "<< std::endl;
-	std::cout << "  " << gameboard[2] << "  "<< std::endl;
-	std::cout << " |-------| " << std::endl;
+	std::cout << gameboard[0] << std::endl;
+	std::cout << gameboard[1] << std::endl;
+	std::cout << gameboard[2] << std::endl;
 	return;
 }
 
 using namespace std;
 
 int main()
-{	
+{			
+	int input = 0;
 	cout << "Tic Tac Toe" << endl;
-	printGB();
+	cout << "-----------\n";
+	testowa:
+	cout << "First player: " << FirstPlayer << endl;
+	cout << "Second player: " << SecondPlayer << endl;
+	cout << "-----------\n\n";
+
+	cout << "1# Press me to play!" << endl;
+	cout << "2# Press me to swap players!" << endl;
+	cout << "3# Press me to leave!" << endl;
+	cout << "#: "; cin >> input;
+	if (input == 1)
+		printGB();
+	else if (input == 2){
+		char temp = FirstPlayer;
+		FirstPlayer = SecondPlayer;
+		SecondPlayer = temp;
+	}
+	else if (input == 3){
+		cout << "Bye, bye!" << endl;
+		return 0;
+	}
+	else 
+		return 0;
 	return 0;
 }
