@@ -16,11 +16,21 @@ void printGB(){
 	return;
 }
 
+void getCords(int &x) {
+	if (x == 0)
+		x+=1;
+	else if (x == 1)
+		x+=2;
+	else if (x == 2)
+		x+=3;
+}
+
 using namespace std;
 
 int main()
 {			
 	int input = 0;
+	int x = 0, y = 0;
 	cout << "Tic Tac Toe" << endl;
 	cout << "-----------\n";
 	testowa:
@@ -33,7 +43,16 @@ int main()
 	cout << "3# Press me to leave!" << endl;
 	cout << "#: "; cin >> input;
 	if (input == 1)
+	{
+		system("clear");
 		printGB();
+		cout << "Enter coordinates:\n";
+		cout << "X: "; cin >> x;
+		cout << "Y: "; cin >> y;
+		getCords(x);
+		cout << x << endl;
+
+	}
 	else if (input == 2){
 		char temp = FirstPlayer;
 		FirstPlayer = SecondPlayer;
@@ -47,3 +66,17 @@ int main()
 		return 0;
 	return 0;
 }
+
+/*
+Y\X  0 1 2
+ 0  | | | |
+ 1  | | | |
+ 2  | | | |
+
+   1 3 5
+ "| | | |", "| | | |", "| | | |"
+	 0			1		   2
+   0+1
+   1+2
+   2+3
+*/
