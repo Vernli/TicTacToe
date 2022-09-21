@@ -3,26 +3,18 @@
 
 char FirstPlayer = 'X';
 char SecondPlayer = 'O';
+char CurrentPlayer = FirstPlayer;
 
-std::vector<std::string> gameboard = { "| | | |", "| | | |", "| | | |"};
+std::vector<std::string> gameboard = { "   ", "   ", "   "};
 
 void welcomeMenu(){
 }
 
 void printGB(){
-	std::cout << gameboard[0] << std::endl;
-	std::cout << gameboard[1] << std::endl;
-	std::cout << gameboard[2] << std::endl;
+	std::cout << "|" << gameboard[0][0] << "|" << gameboard[0][1] << "|" << gameboard[0][2] << "|" << std::endl; 
+	std::cout << "|" << gameboard[1][0] << "|" << gameboard[1][1] << "|" << gameboard[1][2] << "|" << std::endl; 
+	std::cout << "|" << gameboard[2][0] << "|" << gameboard[2][1] << "|" << gameboard[2][2] << "|" << std::endl; 
 	return;
-}
-
-void getCords(int &x) {
-	if (x == 0)
-		x+=1;
-	else if (x == 1)
-		x+=2;
-	else if (x == 2)
-		x+=3;
 }
 
 using namespace std;
@@ -49,9 +41,8 @@ int main()
 		cout << "Enter coordinates:\n";
 		cout << "X: "; cin >> x;
 		cout << "Y: "; cin >> y;
-		getCords(x);
-		cout << x << endl;
-
+		gameboard[x][y] = CurrentPlayer;
+		printGB();
 	}
 	else if (input == 2){
 		char temp = FirstPlayer;
