@@ -17,12 +17,17 @@ void printGB(){
 	return;
 }
 
+// 000  0-- 0-- --0
+// ---  0-- -0- -0-
+// ---  0-- --0 0--
+
+void gameLoop();
+
 using namespace std;
 
 int main()
 {			
 	int input = 0;
-	int x = 0, y = 0;
 	cout << "Tic Tac Toe" << endl;
 	cout << "-----------\n";
 	testowa:
@@ -36,13 +41,7 @@ int main()
 	cout << "#: "; cin >> input;
 	if (input == 1)
 	{
-		system("clear");
-		printGB();
-		cout << "Enter coordinates:\n";
-		cout << "X: "; cin >> x;
-		cout << "Y: "; cin >> y;
-		gameboard[x][y] = CurrentPlayer;
-		printGB();
+		gameLoop();
 	}
 	else if (input == 2){
 		char temp = FirstPlayer;
@@ -58,6 +57,32 @@ int main()
 	return 0;
 }
 
+// game loop
+void gameLoop()
+{
+	int x, y;
+	bool taken = false;
+	while (true) {
+		system("clear");
+		if (taken) {
+			cout << "Place is occupied" << endl;
+		}
+		printGB();
+		cout << "Enter coordinates:\n";
+		cout << "X: "; cin >> x;
+		cout << "Y: "; cin >> y;
+		if(gameboard[x][y] == ' ') {
+			gameboard[x][y] = CurrentPlayer;
+			if(CurrentPlayer == FirstPlayer)
+				CurrentPlayer = SecondPlayer;
+			else if (CurrentPlayer == SecondPlayer)
+				CurrentPlayer = FirstPlayer;
+			taken = false;
+		}
+		else if (gameboard[x][y] == 'X' || gameboard[x][y] == 'O')
+			taken = true;
+	}
+}
 /*
 Y\X  0 1 2
  0  | | | |
@@ -70,4 +95,11 @@ Y\X  0 1 2
    0+1
    1+2
    2+3
+*/
+
+/*
+	currentP = f
+	operacja
+	currentP = s
+	if curr
 */
