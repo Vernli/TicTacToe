@@ -61,10 +61,10 @@ int main()
 void gameLoop()
 {
 	int x, y;
-	bool taken = false;
+	bool switchPlayer = false;
 	while (true) {
 		system("clear");
-		if (taken) {
+		if (switchPlayer) {
 			cout << "Place is occupied" << endl;
 		}
 		printGB();
@@ -77,10 +77,24 @@ void gameLoop()
 				CurrentPlayer = SecondPlayer;
 			else if (CurrentPlayer == SecondPlayer)
 				CurrentPlayer = FirstPlayer;
-			taken = false;
+			switchPlayer = false;
 		}
 		else if (gameboard[x][y] == 'X' || gameboard[x][y] == 'O')
-			taken = true;
+			switchPlayer = true;
+	}
+}
+
+// 000  0-- 0-- --0
+// ---  0-- -0- -0-
+// ---  0-- --0 0--
+
+void winnerChecker(){
+	bool winInRow = false;
+	for (int r = 0; r < 3; r++) {
+		for (int c = 0; c < 3; c++){
+			if (true)
+				return;
+		}
 	}
 }
 /*
@@ -97,9 +111,3 @@ Y\X  0 1 2
    2+3
 */
 
-/*
-	currentP = f
-	operacja
-	currentP = s
-	if curr
-*/
