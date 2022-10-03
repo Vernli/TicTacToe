@@ -31,32 +31,30 @@ using namespace std;
 int main()
 {			
 	int input = 0;
-	cout << "Tic Tac Toe" << endl;
-	cout << "-----------\n";
-	testowa:
-	cout << "First player: " << FirstPlayer << endl;
-	cout << "Second player: " << SecondPlayer << endl;
-	cout << "-----------\n\n";
 
-	cout << "1# Press me to play!" << endl;
-	cout << "2# Press me to swap players!" << endl;
-	cout << "3# Press me to leave!" << endl;
-	cout << "#: "; cin >> input;
-	if (input == 1)
-	{
-		gameLoop();
+	while (input != 3) {
+		system("clear");
+		cout << "Tic Tac Toe" << endl;
+		cout << "-----------\n";
+		cout << "First player: " << FirstPlayer << endl;
+		cout << "Second player: " << SecondPlayer << endl;
+		cout << "-----------\n\n";
+		cout << "1# Press me to play!" << endl;
+		cout << "2# Press me to swap players!" << endl;
+		cout << "3# Press me to leave!" << endl;
+		cout << "#: "; cin >> input;
+		if (input == 1)
+		{
+			gameLoop();
+		}
+		else if (input == 2){
+			char temp = FirstPlayer;
+			FirstPlayer = SecondPlayer;
+			SecondPlayer = temp;
+			CurrentPlayer = FirstPlayer;
+		}
 	}
-	else if (input == 2){
-		char temp = FirstPlayer;
-		FirstPlayer = SecondPlayer;
-		SecondPlayer = temp;
-	}
-	else if (input == 3){
-		cout << "Bye, bye!" << endl;
-		return 0;
-	}
-	else 
-		return 0;
+	cout << "Bye, bye!" << endl;
 	return 0;
 }
 
@@ -101,6 +99,13 @@ void gameLoop()
 // ---  0-- -0- -0-
 // ---  0-- --0 0--
 
+/*
+1 - Win for X
+2 - Win for O
+
+
+*/
+
 int winnerChecker()
 {
 	// win in row
@@ -129,7 +134,7 @@ int winnerChecker()
 	else if (gameboard[0][2] == 'O' && gameboard[1][1] == 'O' && gameboard[2][0] == 'O')
 		return 2;
 
-	// draw
+	// draw - by count occupied places in gameboard
 	int result = 0;
 	for (int i = 0; i < gameboard.size(); i++) {
 		string::difference_type n = count(gameboard[i].begin(), gameboard[i].end(), ' ');
