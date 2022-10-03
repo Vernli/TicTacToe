@@ -1,4 +1,5 @@
 #include <iostream>
+#include <algorithm>
 #include <vector>
 
 char FirstPlayer = 'X';
@@ -85,6 +86,7 @@ void gameLoop()
 			switchPlayer = true;
 	}
 	int winner = winnerChecker();
+	system("clear");
 	printGB();
 	if (winner == 1)
 		cout << "Player X won!" << endl;
@@ -126,6 +128,23 @@ int winnerChecker()
 		return 1;
 	else if (gameboard[0][2] == 'O' && gameboard[1][1] == 'O' && gameboard[2][0] == 'O')
 		return 2;
+
+	// draw
+	int result = 0;
+	for (int i = 0; i < gameboard.size(); i++) {
+		string::difference_type n = count(gameboard[i].begin(), gameboard[i].end(), ' ');
+		if (n != 0) {
+			result = 0;
+			break;
+		}
+		else if (n == 0) {
+			result = -1;
+			continue;
+		}
+	}
+
+	if (result == -1)
+		return -1;
 	
 	return 0;
 }
