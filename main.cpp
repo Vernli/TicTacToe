@@ -22,6 +22,8 @@ void printGB(){
 // ---  0-- --0 0--
 
 void gameLoop();
+int winnerChecker();
+
 
 using namespace std;
 
@@ -62,7 +64,7 @@ void gameLoop()
 {
 	int x, y;
 	bool switchPlayer = false;
-	while (true) {
+	while (!winnerChecker()) {
 		system("clear");
 		if (switchPlayer) {
 			cout << "Place is occupied" << endl;
@@ -82,21 +84,52 @@ void gameLoop()
 		else if (gameboard[x][y] == 'X' || gameboard[x][y] == 'O')
 			switchPlayer = true;
 	}
+	int winner = winnerChecker();
+	printGB();
+	if (winner == 1)
+		cout << "Player X won!" << endl;
+	else if (winner == 2)
+		cout << "Player O won!" << endl;
+	else 
+		cout << "Draw!" << endl;
+	
 }
 
 // 000  0-- 0-- --0
 // ---  0-- -0- -0-
 // ---  0-- --0 0--
 
-void winnerChecker(){
-	bool winInRow = false;
+int winnerChecker()
+{
+	// win in row
 	for (int r = 0; r < 3; r++) {
-		for (int c = 0; c < 3; c++){
-			if (true)
-				return;
-		}
+		if (gameboard[r][0] == 'X' && gameboard[r][1] == 'X' && gameboard[r][2] == 'X') 
+			return 1;
+		else if (gameboard[r][0] == 'O' && gameboard[r][1] == 'O' && gameboard[r][2] == 'O') 
+			return 2;
 	}
+
+	// win in column
+	for (int c = 0; c < 3; c++) {
+		if (gameboard[0][c] == 'X' && gameboard[1][c] == 'X' && gameboard[2][c] == 'X') 
+			return 1;
+		else if (gameboard[0][c] == 'O' && gameboard[1][c] == 'O' && gameboard[2][c] == 'O') 
+			return 2;
+	}
+
+	// win diagonal \/
+	if (gameboard[0][0] == 'X' && gameboard[1][1] == 'X' && gameboard[2][2] == 'X')
+		return 1;
+	else if (gameboard[0][0] == 'O' && gameboard[1][1] == 'O' && gameboard[2][2] == 'O')
+		return 2;
+	if (gameboard[0][2] == 'X' && gameboard[1][1] == 'X' && gameboard[2][0] == 'X')
+		return 1;
+	else if (gameboard[0][2] == 'O' && gameboard[1][1] == 'O' && gameboard[2][0] == 'O')
+		return 2;
+	
+	return 0;
 }
+
 /*
 Y\X  0 1 2
  0  | | | |
