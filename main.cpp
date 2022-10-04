@@ -1,15 +1,13 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
+#include <string>
 
 char FirstPlayer = 'X';
 char SecondPlayer = 'O';
 char CurrentPlayer = FirstPlayer;
 
 std::vector<std::string> gameboard = { "   ", "   ", "   "};
-
-void welcomeMenu(){
-}
 
 void printGB(){
 	std::cout << "|" << gameboard[0][0] << "|" << gameboard[0][1] << "|" << gameboard[0][2] << "|" << std::endl; 
@@ -45,7 +43,15 @@ int main()
 		cout << "#: "; cin >> input;
 		if (input == 1)
 		{
+			char choice;
 			gameLoop();
+			cout << "Do you want play again ? [Y/N]" << endl;
+			cout << "#:";
+			cin >> choice;
+			if (choice == 'Y')
+				continue;
+			else if (choice == 'N')
+				break;
 		}
 		else if (input == 2){
 			char temp = FirstPlayer;
@@ -86,13 +92,15 @@ void gameLoop()
 	int winner = winnerChecker();
 	system("clear");
 	printGB();
-	if (winner == 1)
+	if (winner == 1){	
 		cout << "Player X won!" << endl;
-	else if (winner == 2)
-		cout << "Player O won!" << endl;
-	else 
+	}
+	else if (winner == 2) {
+		cout <<  "Player O won!" << endl;
+	}
+	else {
 		cout << "Draw!" << endl;
-	
+	}
 }
 
 // 000  0-- 0-- --0
