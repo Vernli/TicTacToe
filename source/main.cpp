@@ -3,9 +3,11 @@
 #include <vector>
 #include <string>
 
+// ############################################################## {
 char FirstPlayer = 'X';
 char SecondPlayer = 'O';
 char CurrentPlayer = FirstPlayer;
+// ############################################################## }
 
 std::vector<std::string> gameboard = { "   ", "   ", "   "};
 
@@ -53,12 +55,14 @@ int main()
 			else if (choice == 'N')
 				break;
 		}
+		// ############################################################### {
 		else if (input == 2){
 			char temp = FirstPlayer;
 			FirstPlayer = SecondPlayer;
 			SecondPlayer = temp;
 			CurrentPlayer = FirstPlayer;
 		}
+		// ############################################################### }
 	}
 	cout << "Bye, bye!" << endl;
 	return 0;
