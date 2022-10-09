@@ -23,5 +23,5 @@ class Game {
         Player* gamers;
         int cordX;
         int cordY;
-        bool isFull
+        bool isFull;
 }
