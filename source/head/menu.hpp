@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include "head/player.hpp"
+#include "head/game.hpp"
 
 class Menu {
     public:
@@ -8,6 +9,5 @@ class Menu {
         void menuLoop();
     private:
         Player* player = new Player;
-
         void mainMenu();
 }

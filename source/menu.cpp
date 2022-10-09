@@ -6,7 +6,6 @@ void Menu::menuLoop(){
         switch (menuInput)
         {
         case 1:
-            // game loop
             break;
         case 2:
             player->swapPlayers();
