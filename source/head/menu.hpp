@@ -6,7 +6,7 @@
 class Menu {
     public:
         int menuInput = 0;
-        void menuLoop();
+        int menuLoop();
     private:
         Player* player = new Player;
         void mainMenu();

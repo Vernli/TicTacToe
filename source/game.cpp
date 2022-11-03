@@ -86,3 +86,22 @@ int Game::WinnerCheck(){
 	
 	return 0;
 }
+
+int Game::GameInit() {
+	try {
+		gamers = new Player;
+		menu = new Menu();
+		return 1;
+	}
+	catch(const std::exception &ex) {
+		return 0;
+	}
+}
+
+int Game::GameStart() {
+	if(!GameInit()) {
+		std::cout << "Error: GameInit" << endl;
+		return 101;
+	}
+	menu->menuLoop();
+}

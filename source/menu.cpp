@@ -1,11 +1,12 @@
 #include "head/menu.hpp"
 
-void Menu::menuLoop(){
+int Menu::menuLoop(){
     while(menuInput != 3) {
         mainMenu();
         switch (menuInput)
         {
         case 1:
+            return 1;
             break;
         case 2:
             player->swapPlayers();
