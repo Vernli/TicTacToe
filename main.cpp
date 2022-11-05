@@ -2,10 +2,9 @@
 #include <algorithm>
 #include <vector>
 #include <string>
+#include "source/headers/player.hpp"
 
-char FirstPlayer = 'X';
-char SecondPlayer = 'O';
-char CurrentPlayer = FirstPlayer;
+Player players;
 
 std::vector<std::string> gameboard = { "   ", "   ", "   "};
 
@@ -34,8 +33,8 @@ int main()
 		system("clear");
 		cout << "Tic Tac Toe" << endl;
 		cout << "-----------\n";
-		cout << "First player: " << FirstPlayer << endl;
-		cout << "Second player: " << SecondPlayer << endl;
+		cout << "First player: " << players.FirstPlayer << endl;
+		cout << "Second player: " << players.SecondPlayer << endl;
 		cout << "-----------\n\n";
 		cout << "1# Press me to play!" << endl;
 		cout << "2# Press me to swap players!" << endl;
@@ -54,10 +53,7 @@ int main()
 				break;
 		}
 		else if (input == 2){
-			char temp = FirstPlayer;
-			FirstPlayer = SecondPlayer;
-			SecondPlayer = temp;
-			CurrentPlayer = FirstPlayer;
+			players.swapPlayers();
 		}
 	}
 	cout << "Bye, bye!" << endl;
@@ -79,11 +75,11 @@ void gameLoop()
 		cout << "X: "; cin >> x;
 		cout << "Y: "; cin >> y;
 		if(gameboard[x][y] == ' ') {
-			gameboard[x][y] = CurrentPlayer;
-			if(CurrentPlayer == FirstPlayer)
-				CurrentPlayer = SecondPlayer;
-			else if (CurrentPlayer == SecondPlayer)
-				CurrentPlayer = FirstPlayer;
+			gameboard[x][y] = players.CurrentPlayer;
+			if(players.CurrentPlayer == players.FirstPlayer)
+				players.CurrentPlayer = players.SecondPlayer;
+			else if (players.CurrentPlayer == players.SecondPlayer)
+				players.CurrentPlayer = players.FirstPlayer;
 			switchPlayer = false;
 		}
 		else if (gameboard[x][y] == 'X' || gameboard[x][y] == 'O')
