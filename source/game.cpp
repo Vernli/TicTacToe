@@ -101,7 +101,12 @@ int Game::GameInit() {
 int Game::GameStart() {
 	if(!GameInit()) {
 		std::cout << "Error: GameInit" << endl;
-		return 101;
+		return 111;
 	}
-	menu->menuLoop();
+
+	if(menu->menuLoop(gamers) == 0) { exit(); }
+	else if (menu -> menuLoop() == 1) {
+		GameLoop();
+	}
+	
 }

@@ -8,6 +8,5 @@ class Menu {
         int menuInput = 0;
         int menuLoop();
     private:
-        Player* player = new Player;
         void mainMenu();
 }

@@ -1,6 +1,6 @@
 #include "head/menu.hpp"
 
-int Menu::menuLoop(){
+int Menu::menuLoop(Player &player){
     while(menuInput != 3) {
         mainMenu();
         switch (menuInput)
@@ -13,6 +13,7 @@ int Menu::menuLoop(){
             break;
         case 3:
             std::cout << "Bye, bye..." << std::endl;
+            return 0;
             break;
         default:
             std::cout << "Invalid character" << std::endl; // ??? 
